@@ -1,0 +1,104 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+.site-inner:after { content: ""; display: table; clear: both; }
+
+.site-inner { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+/** Map set  @param 	Map 	$map 		The map to use @param 	String 	$key 		The key to update @param 	Mixed 	$value 		The new value @return 	Map 			The new map */
+/** Get the column width in percent for the global or a specific context  @param 	int 		$columns 					The number of columns to calculate @param 	int 		$context : $gridle-columns-count 	 	The context to use @return 	percentage 							The width in percent */
+/** Get a state map  @param 	string 		$name 		The name of the state to get @return 	map 				A state map object */
+/** Check if a state exist :  @param 	string 		$name 		The name of the state to check @return 	Boolean 			true is exist */
+/** Get the media queries variables :  @param 	int 		$index 	 	The media query indes @param 	String 		$var 		The media query variable name @return 	String|int 			The variable value */
+/** Get a variable  @param 	String 		$varName 				The variable name @param  	String 		$stateMap-or-stateName 	 	The state name or a map state value @return 	Mixed 							The finded value */
+/** Set a variable in a state @param 	Mixed $stateName-or-stateIndex 	The state name of state index @param  	String $var                    		Variable name to assign @param  	Mixed $newValue          		The new value to assign @return 	List                         			The states list (full) */
+/** Generate a column  @param 	String 		$name 			The column name (often count) @param 	int 		$columns 		The column count that the column will take @param 	int 		$context 		The context on witch the with will be calculed @param 	Boolean 	$generateClasses 	Set if the column has to be generated in css */
+/** Generate classname  @param 	List 		$parrern 	The pattern to use to generate classname @param 	String 		$state 		The state @param 	int 		$count 		The column count */
+/** Get the media query for a particular state, or with, etc...  @param 	Mixed 		$state-or-min-width 		The state name of the min with @param 	Mixed 		$max-width 			The max width if first param is a min width @return 	String 						The media query string without the @media */
+/** Get states count  @return 	int 	The number of states defined */
+/** Setup */
+/** Register a clear each class */
+/** Register a special class */
+/** Register default states */
+/** Register default mobile first states : */
+/** Set the debug device (not used for now)  @param 	String 		$state 		The state to update @para m 	String 		$device 	The device to use (iphone, etc...) */
+/** Parent clear each */
+/** Vertical align : */
+/** Show inline  @param 	String 		$state 		The state name */
+/** Generate a custom class for all the states  @param 	list 	$pattern 		The name pattern of the class @param 	list 	$statesNames 		The states names to generate */
+html, body { background: #fdfdfd; }
+
+a { text-decoration: none; }
+
+.site-inner { position: relative; width: 60em; margin-left: auto; margin-right: auto; -webkit-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; transition: all 0.3s ease-out; }
+
+.row header { text-align: center; }
+.row header p { padding: 0px 230px; }
+
+/* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/* ★ Typography                 */
+/* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+a, p, h1, h2, h3, h4, h5 { -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; }
+
+a { color: #dae0d6; font-family: "Open Sans", sans-serif; font-size: 12px; -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; transition: all 0.3s ease; }
+a:hover { color: white; }
+
+.heading { color: dimgray; font-family: "Open Sans", sans-serif; }
+.heading.h-01 { font-size: 24px; font-weight: 400; line-height: 1; color: black; text-transform: uppercase; margin-bottom: 30px; }
+.heading.h-02 { font-size: 14px; font-weight: 600; line-height: 18px; color: black; text-transform: uppercase; }
+.heading.h-03 { font-size: 24px; font-weight: 300; line-height: 1; }
+.heading.h-04 { font-size: 14px; font-weight: 400; line-height: 20px; }
+
+.copy { color: dimgray; font-family: "Open Sans", sans-serif; }
+.copy.c-01 { font-size: 12px; font-weight: 400; line-height: 18px; }
+.copy.c-02 { font-size: 12px; font-weight: 700; line-height: 1; }
+
+.br { position: relative; border: 0 solid #dae0d6; border-top-width: 1px; height: 0; margin: 30px auto; clear: both; display: block; width: 590px; }
+.br:after { content: ""; display: block; position: absolute; left: 50%; height: 15px; width: 15px; margin-top: -15px; margin-left: -15px; background: #b8bbcc; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); border: 7px solid #fdfdfd; overflow: hidden; }
+
+.bouncing-arrow { display: none; position: relative; cursor: pointer; z-index: 40; margin: 0 auto; height: 40px; width: 33px; }
+.bouncing-arrow .text { display: block; font-family: "Open Sans", sans-serif; font-size: 10px; font-weight: 600; color: #fdfdfd; opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=” $value * 100 “)"; filter: alpha(opacity=0); zoom: 1; -webkit-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; transition: all 0.3s ease-out; }
+.bouncing-arrow .left, .bouncing-arrow .right { position: absolute; display: block; height: 3px; width: 20px; background: #fdfdfd; -webkit-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; transition: all 0.3s ease-out; }
+.bouncing-arrow .left { left: 0; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); }
+.bouncing-arrow .right { right: 0; -webkit-transform: rotate(135deg); -moz-transform: rotate(135deg); -ms-transform: rotate(135deg); -o-transform: rotate(135deg); transform: rotate(135deg); }
+.bouncing-arrow:hover .text { opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=” $value * 100 “)"; filter: alpha(opacity=100); zoom: 1; -webkit-transform: translateY(8px); -moz-transform: translateY(8px); -ms-transform: translateY(8px); -o-transform: translateY(8px); transform: translateY(8px); }
+.bouncing-arrow:hover .left, .bouncing-arrow:hover .right { opacity: 0.3; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=” $value * 100 “)"; filter: alpha(opacity=30); zoom: 1; -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg); }
+.bouncing-arrow:hover .left { left: -15px; }
+.bouncing-arrow:hover .right { right: -15px; }
+
+.bouncing-arrow.open .text { opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=” $value * 100 “)"; filter: alpha(opacity=0); zoom: 1; }
+.bouncing-arrow.open .left, .bouncing-arrow.open .right { -webkit-transform: translateY(0); -moz-transform: translateY(0); -ms-transform: translateY(0); -o-transform: translateY(0); transform: translateY(0); }
+.bouncing-arrow.open .left { left: 6px; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); }
+.bouncing-arrow.open .right { right: 7px; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg); }
+
+.button { display: inline-block; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 12px; font-weight: 400; text-transform: uppercase; padding: 10px 15px; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; }
+.button.success { background: green; color: white; }
+.button.danger { background: red; color: white; }
+.button.warning { background: yellow; color: white; }
+.button.rounded { border-radius: 3px; }
+.button:hover { opacity: 0.7; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=” $value * 100 “)"; filter: alpha(opacity=70); zoom: 1; }
+
+.header { -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden; background: url(/images/hero-bg.jpg) no-repeat top center; background-size: cover; height: 520px; }
+.header header:after { content: ""; display: table; clear: both; }
+.header .logo { background: url(/images/logo.png) no-repeat; background-size: 100%; height: 146px; width: 291px; float: left; }
+.header .primary-nav { float: right; margin-top: 50px; }
+.header .primary-nav > a { padding: 0 15px; font-weight: 600; text-transform: uppercase; }
+.header .primary-nav > a:last-child { padding-right: 0; }
+.header .hero { text-align: center; }
+.header .h-hero, .header .h-hero-alt { font-weight: 600; font-size: 48px; color: #fdfdfd; padding-bottom: 25px; }
+.header .h-hero-alt { text-transform: uppercase; margin-top: 70px; }
+.header .c-hero { color: #fdfdfd; padding: 0 200px; }
+.header .contact-trigger { position: relative; color: #fdfdfd; font-weight: 600; text-transform: uppercase; }
+.header .contact-trigger:hover { color: #dae0d6; }
+.header .contact-trigger:before, .header .contact-trigger:after { content: ""; position: relative; top: -3px; display: inline-block; background: #fdfdfd; height: 1px; width: 100px; }
+.header .contact-trigger:before { right: 10px; }
+.header .contact-trigger:after { left: 10px; }
+
+@media screen and (min-width: 742px) and (max-width: 1024px) { .site-inner { width: 47.9375em; }
+  .row header p { padding: 0 170px; } }
+@media screen and (min-width: 320px) and (max-width: 742px) { .site-inner { width: 100%; padding: 0 20px; }
+  .br { width: 100%; }
+  .row header p { padding: 0; }
+  .logo { margin: 0 auto; float: none !important; }
+  .primary-nav { display: none; float: none !important; width: 100%; margin: 0 !important; }
+  .primary-nav > a { text-align: center; display: block; padding: 10px 0 !important; }
+  .bouncing-arrow { display: block; } }

@@ -1,0 +1,65 @@
+// -------------------------------------
+// ★ Responsive Styles
+// -------------------------------------
+@include gridle_state(tablet) {
+  .site-inner { width: $tabletWidth; }
+  .row header {
+    p { padding: 0 170px; }
+  }
+}
+
+@include gridle_state(mobile) {
+  .site-inner { width: $mobileWidth; padding: 0 20px; }
+  .br { width: 100%; }
+  .row header {
+    p { padding: 0; }
+  }
+
+  // Header
+  .logo { margin: 0 auto; float: none !important; }
+  .primary-nav {
+    display: none;
+    float: none !important;
+    width: 100%;
+    margin: 0 !important; 
+    & > a {
+      text-align: center;
+      display: block;
+      padding: 10px 0 !important;
+    }
+  }
+
+  .bouncing-arrow { display: block; }
+}
+
+
+
+// Standard 960 or larger (browsers) 
+@media only screen and (min-width: 960px) {
+
+}
+
+// Smaller than standard 960 (devices and browsers)
+@media only screen and (max-width: 959px) {
+
+}
+
+// Tablet Portrait size to standard 960 (devices and browsers)
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+}
+
+// All Mobile Sizes (devices and browser)
+@media only screen and (max-width: 767px) {
+
+}
+
+// Mobile Landscape Size to Tablet Portrait (devices and browsers)
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+}
+
+// Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
+@media only screen and (max-width: 479px) {
+
+}

@@ -1,0 +1,96 @@
+// -------------------------------------
+// ★ Misc Styles - Line breaks, borders, etc
+// -------------------------------------
+
+// Line Break
+$lineBreakColor: $colorOlive;
+$shapeColor: $colorBlue;
+
+.br {
+  position: relative;
+  border: 0 solid $lineBreakColor;
+  border-top-width: 1px;
+  height: 0;
+  @include margin(30px auto);
+  clear: both;
+  display: block;
+  width: 590px;
+  &:after {
+    content: "";
+    display: block;
+    @include position(absolute, null null null 50%);
+    @include size(15px);
+    @include margin(-15px null null -15px);
+    background: $shapeColor;
+    @include transform(rotate(45deg));
+    border: 7px solid $colorWhite;
+    overflow: hidden;
+  }
+}
+
+
+// Bouncing Arrow
+.bouncing-arrow {
+  display: none;
+  position: relative;
+  cursor: pointer;
+  z-index: 40;
+  margin: 0 auto;
+  @include size(33px 40px);
+  .text {
+    display: block;
+    font: {
+      family: $opensans;
+      size: 10px;
+      weight: 600;
+    }
+    color: $colorWhite;
+    @include opacity(0);
+    @include transition(all .3s ease-out);
+  }
+
+  .left, .right {
+    position: absolute;
+    display: block;
+    @include size(20px 3px);
+    background: $colorWhite;
+    @include transition(all .3s ease-out);
+  }
+  .left {
+    left: 0;
+    @include transform(rotate(45deg));
+  }
+  .right {
+    right: 0;
+    @include transform(rotate(135deg));
+  }
+
+  &:hover {
+    .text {
+      @include opacity(1);
+      @include transform(translateY(8px));
+    }
+    .left, .right {
+      @include opacity(.3);
+      @include transform(rotate(90deg));
+    }
+    .left { left: -15px; }
+    .right { right: -15px; }
+  }
+}
+
+// Opened
+.bouncing-arrow.open {
+
+  .text { @include opacity(0); }
+  .left, .right { @include transform(translateY(0)); }
+  .left {
+    left: 6px;
+    @include transform(rotate(45deg));
+  }
+  .right {
+    right: 7px;
+    @include transform(rotate(-45deg));
+  }
+}
+

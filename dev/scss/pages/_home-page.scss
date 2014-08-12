@@ -1,0 +1,68 @@
+// -------------------------------------
+// ★ HEADER
+// -------------------------------------
+.header {
+  @include killflicker;
+  background: url(/images/hero-bg.jpg) no-repeat top center;
+  background-size: cover;
+  height: 520px;
+
+  header { @include clearfix; }
+  .logo {
+    background: url(/images/logo.png) no-repeat;
+    background-size: 100%;
+    @include size(291px 146px);
+    float: left;
+  }
+
+  .primary-nav {
+    float: right;
+    margin-top: 50px;
+    & > a {
+      padding: 0 15px; 
+      font-weight: 600;
+      text-transform: uppercase;
+      &:last-child { padding-right: 0; }
+    }
+  }
+
+  // Hero
+  .hero {
+    text-align: center;
+  }
+  .h-hero, .h-hero-alt {
+    font: {
+      weight: 600;
+      size: 48px;
+    }
+    color: $colorWhite;
+    padding-bottom: 25px;
+  }
+  .h-hero-alt { text-transform: uppercase; margin-top: 70px; }
+  .c-hero { color: $colorWhite; padding: 0 200px; }
+  .contact-trigger {
+    position: relative;
+    color: $colorWhite;
+    font-weight: 600;
+    text-transform: uppercase;
+    &:hover {
+      color: $colorOlive;
+    }
+    &:before, &:after {
+      content: "";
+      @include position(relative, -3px null null null);
+      display: inline-block;
+      background: $colorWhite;
+      @include size(100px 1px);
+    }
+    &:before { right: 10px; }
+    &:after { left: 10px; }
+  }
+}
+
+// -------------------------------------
+// ★ WHO ARE WE?
+// -------------------------------------
+.about {
+
+}

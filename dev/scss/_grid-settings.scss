@@ -1,0 +1,27 @@
+
+// Change the grid settings
+
+$desktopWidth: em(960);
+$tabletWidth: em(767);
+$mobileWidth: 100%;
+
+$column: 90px;
+$gutter: 20px;
+$grid-columns: 12;
+$layout-direction: ltr;
+$default-feature: max-width;
+
+@include gridle_setup((
+  context: $grid-columns,
+  gutter-width: $gutter,
+  direction: $layout-direction,
+));
+
+@include gridle_register_state (mobile, (
+  min-width: 320px,
+  max-width: 742px,
+));
+@include gridle_register_state (tablet, (
+  min-width: 742px,
+  max-width: 1024px
+));

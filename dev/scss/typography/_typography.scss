@@ -1,0 +1,87 @@
+// -------------------------------
+/* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/* ★ Typography                 */
+/* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+// -------------------------------
+
+// Variables
+$baseFontSize: 16px;
+$baseLineHeight: 1;
+$baseWeight: 400;
+
+// Google Fonts
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+
+// Fonts
+$arial: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$helvetica: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+$opensans: 'Open Sans', sans-serif;
+
+// Global
+a, p, h1, h2, h3, h4, h5 {
+  @include antialias;
+}
+
+// Links
+a {
+  color: $colorOlive;
+  font: {
+    family: $opensans;
+    size: 12px;
+  }
+  @include transition(all .3s ease);
+  &:hover { color: white; }
+}
+
+
+// Headers
+$headers: 
+  (h-01, 24px, $baseWeight, $baseLineHeight),
+  (h-02, 14px, 600, 18px),
+  (h-03, 24px, 300, $baseLineHeight),
+  (h-04, 14px, $baseWeight, 20px);
+
+.heading {
+  color: $colorMain;
+  font-family: $opensans;
+  @each $header, $fontSize, $fontWeight, $lineHeight in $headers {
+    &.#{$header} {
+      font: {
+        size: $fontSize;
+        weight: $fontWeight;
+      }
+      line-height: $lineHeight;
+      @if $header == h-01 {
+        color: black;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+      }
+      @if $header == h-02 {
+        color: black;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+// Copy
+$copies: 
+  (c-01, 12px, $baseWeight, 18px),
+  (c-02, 12px, 700, $baseLineHeight);
+
+.copy {
+  color: $colorMain;
+  font-family: $opensans;
+  @each $copy, $fontSize, $fontWeight, $lineHeight in $copies {
+    &.#{$copy} {
+      font: {
+        size: $fontSize;
+        weight: $fontWeight;
+      }
+      line-height: $lineHeight;
+      @if $copy == copy-02 {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

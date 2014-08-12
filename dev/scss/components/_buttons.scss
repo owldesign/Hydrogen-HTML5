@@ -1,0 +1,35 @@
+// -------------------------------------
+// ★ Buttons
+// -------------------------------------
+
+// Variables
+$buttonTextSize: 12px;
+
+
+$buttons:
+  (success, green),
+  (danger, red),
+  (warning, yellow);
+
+.button {
+  display: inline-block;
+  font: {
+    family: $helvetica;
+    size: $buttonTextSize;
+    weight: 400;
+  }
+  text-transform: uppercase;
+  padding: 10px 15px;
+  @include transition(all .3s ease-in-out);
+  @each $button, $buttonColor in $buttons {
+    &.#{$button} {
+      background: $buttonColor;
+      color: white;
+    }
+  }
+  &.rounded { border-radius: 3px; }
+
+  &:hover {
+    @include opacity(.7);
+  }
+}
