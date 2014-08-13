@@ -15,28 +15,34 @@ $shapeColor: $colorBlue;
   clear: both;
   display: block;
   width: 590px;
-  &:after {
+  &:after, &:before {
     content: "";
     display: block;
     @include position(absolute, null null null 50%);
-    @include size(15px);
-    @include margin(-15px null null -15px);
-    background: $shapeColor;
-    @include transform(rotate(45deg));
-    border: 7px solid $colorWhite;
     overflow: hidden;
+    @include transform(rotate(45deg));
+  }
+  &:after {
+    @include size(10px);
+    @include margin(-6px null null -6px);
+    background: $shapeColor;
+  }
+  &:before {
+    @include size(17px);
+    @include margin(-9px null null -9px);
+    background: $colorWhite;
   }
 }
 
 
-// Bouncing Arrow
-.bouncing-arrow {
+// Menu Arrow
+.menu-arrow {
   display: none;
-  position: relative;
+  @include position(relative, null null null null);
   cursor: pointer;
   z-index: 40;
   margin: 0 auto;
-  @include size(33px 40px);
+  @include size(33px 30px);
   .text {
     display: block;
     font: {
@@ -80,7 +86,7 @@ $shapeColor: $colorBlue;
 }
 
 // Opened
-.bouncing-arrow.open {
+.menu-arrow.open {
 
   .text { @include opacity(0); }
   .left, .right { @include transform(translateY(0)); }

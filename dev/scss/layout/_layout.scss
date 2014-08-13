@@ -11,8 +11,22 @@
 }
 
 .row {
+  padding: 60px 0;
   header {
     text-align: center;
+    margin-bottom: 60px;
     p { padding: 0px 230px; }
+    @include gridle_state(tablet) { p { padding: 0px 170px; } }
+    @include gridle_state(mobile) { p { padding: 0; } }
+  }
+}
+
+
+.half-col {
+  @include gridle(6);
+  @include gridle(12, 'mobile-small');
+  @include gridle_state(mobile) {
+    margin-bottom: 40px;
+    &:last-child { margin-bottom: 0; }
   }
 }

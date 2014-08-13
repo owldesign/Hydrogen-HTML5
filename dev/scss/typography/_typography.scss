@@ -60,6 +60,10 @@ $headers:
         color: black;
         text-transform: uppercase;
       }
+      @if $header == h-04 {
+        color: $colorBurgandy;
+        text-transform: uppercase;
+      }
     }
   }
 }
@@ -67,7 +71,8 @@ $headers:
 // Copy
 $copies: 
   (c-01, 12px, $baseWeight, 18px),
-  (c-02, 12px, 700, $baseLineHeight);
+  (c-02, 12px, 700, $baseLineHeight),
+  (c-03, 12px, $baseWeight, 20px);
 
 .copy {
   color: $colorMain;

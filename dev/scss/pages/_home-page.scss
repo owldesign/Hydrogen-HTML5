@@ -1,18 +1,30 @@
+// DEBUGING ONLY - DELETE FOR PRODUCTION
+#debug {
+  @include position(fixed, null null 0 0);
+  color: white;
+  font-family: $opensans;
+  font-weight: 800;
+  padding: 20px;
+  @include gridle_state(tablet) { background: $colorPink; &:before { content: "TABLET"; } }
+  @include gridle_state(mobile) { background: $colorOlive; &:before { content: "MOBILE"; } }
+}
+
+
 // -------------------------------------
 // ★ HEADER
 // -------------------------------------
 .header {
-  @include killflicker;
   background: url(/images/hero-bg.jpg) no-repeat top center;
   background-size: cover;
-  height: 520px;
-
-  header { @include clearfix; }
+  padding: 0px;
+  header { @include clearfix; margin-bottom: 50px; }
   .logo {
-    background: url(/images/logo.png) no-repeat;
-    background-size: 100%;
-    @include size(291px 146px);
+    margin-top: 30px;
+    @include size(165px 61px);
     float: left;
+    svg {
+      * { fill: $colorWhite; }
+    }
   }
 
   .primary-nav {
@@ -29,6 +41,7 @@
   // Hero
   .hero {
     text-align: center;
+    padding-bottom: 30px;
   }
   .h-hero, .h-hero-alt {
     font: {
@@ -37,8 +50,9 @@
     }
     color: $colorWhite;
     padding-bottom: 25px;
+    @include transition(all .5s ease-out);
   }
-  .h-hero-alt { text-transform: uppercase; margin-top: 70px; }
+  .h-hero-alt { text-transform: uppercase; margin-top: 30px; }
   .c-hero { color: $colorWhite; padding: 0 200px; }
   .contact-trigger {
     position: relative;
@@ -58,11 +72,126 @@
     &:before { right: 10px; }
     &:after { left: 10px; }
   }
+
+  // Responsive
+  @include gridle_state(tablet) { 
+    .c-hero { padding: 0 90px; } 
+  }
+  @include gridle_state(mobile) { 
+    .primary-nav {
+      display: none;
+      float: none; 
+      width: 100%;
+      margin: 0;
+      & > a {
+        text-align: center;
+        display: block;
+        padding: 10px 0 !important;
+      }
+    }
+    .h-hero { margin-top: 30px; }
+    .c-hero { padding: 0 30px; } 
+  }
+  @include gridle_state(mobile-small) { .c-hero { padding: 0; } }
 }
 
 // -------------------------------------
 // ★ WHO ARE WE?
 // -------------------------------------
 .about {
+  aside {
+    position: relative;
+    figure {
+      float: left;
+    }
+    h2 { margin-bottom: 10px; }
+    h4 { margin-bottom: 15px; }
+  }
+}
+
+// -------------------------------------
+// ★ QUOTES
+// -------------------------------------
+.quotes {
+  background: url(/images/quote-bg.jpg) no-repeat;
+  background-size: cover;
+  header { margin: 0; }
+  
+  .h-quote {
+    font: {
+      weight: 300;
+      size: 60px;
+    }
+    line-height: 80px;
+    color: $colorWhite;
+  }
+  .c-author {
+    position: relative;
+    font: {
+      weight: 600;
+      size: 14px;
+    }
+    color: $colorWhite;
+    margin-top: 35px;
+    &:before {
+      content: "";
+      @include position(absolute, -25px null null 50%);
+      display: inline-block;
+      @include size(7px);
+      margin-left: -5px;
+      background: rgba($colorOlive, .3);
+      @include transform(rotate(45deg));
+
+    }
+  }
+
+  // Responsive
+  @include gridle_state(mobile) { 
+    .h-quote {
+      font-size: 18px;
+      line-height: 26px;
+      padding: 0 20px;
+    }
+    .c-author {
+      font-size: 12px;
+      margin-top: 30px;
+      &:before {
+        top: -17px;
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+// ★ OUR WORKS
+// -------------------------------------
+.our-work {
+
+  .item, .grid-sizer {
+    width: 20%;
+  }
+  .item {
+    figure {
+      img { display: block; width: 100%; }
+    }
+  }
+
+
+  // Responsive
+  @include gridle_state(tablet) { 
+    .item, .grid-sizer {
+      width: 33.3333%;
+    }
+  }
+  @include gridle_state(mobile) { 
+    .item, .grid-sizer {
+      width: 50%;
+    }
+  }
 
 }
+
+
+
+

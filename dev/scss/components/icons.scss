@@ -1,0 +1,30 @@
+// -------------------------------------
+// ★ Aside Icons
+// -------------------------------------
+
+.aside-icon {
+  position: relative;
+  @include size(65px);
+  margin-right: 20px;
+  padding: 2px 0;
+  svg {
+    #circle { stroke: $colorPink; }
+    #icon { fill: $colorPink; }
+  }
+  @include gridle_state(tablet) {
+    padding: 14px 0;
+    @include size(60px);
+  }
+  @include gridle_state(mobile) {
+    overflow: hidden;
+    @include size(40px);
+    margin-right: 10px;
+    padding: 0;
+    svg {
+      position: absolute;
+      @include position(absolute, -24px null null -20px);
+      @include size(80px);
+      #circle { opacity: 0; }
+    }
+  }
+}

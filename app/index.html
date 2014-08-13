@@ -24,9 +24,9 @@
     <section class="header row">
       <div class="site-inner">
         <header>
-          <h1 class="logo"></h1>
+          <h1 class="logo"><img src="images/logo.svg" class="inject-me" /></h1>
 
-          <div class="bouncing-arrow"><span class="text">MENU</span><span class="left"></span><span class="right"></span></div>
+          <div class="menu-arrow"><span class="text">MENU</span><span class="left"></span><span class="right"></span></div>
           <nav class="primary-nav">
             <a href="#">Home</a>
             <a href="#">About</a>
@@ -54,17 +54,53 @@
           <p class="copy c-01">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt dolor risus, nec convallis justo malesuada nec.</p>
           <hr class="br" />
         </header>
+
+        <aside class="half-col">
+          <figure class="aside-icon"><img src="images/icon_thumb.svg" class="inject-me" /></figure>
+          <h2 class="heading h-02">Block Info One</h2>
+          <h4 class="heading h-04">Lorem ipsum dolor sit amet, consectetr adipiscing elit. Cras tincidunt.</h4>
+          <p class="copy c-03">In eget mollis purus. Integer sapien turpis, facilisis sed ante ac, blandit fringilla orci. Nam eget eros non ante vulputate pulvinar eget vitae neque. Praesent sit amet nisi vitae velit gravida semper.</p>
+        </aside>
+
+        <aside class="half-col">
+          <figure class="aside-icon"><img src="images/icon_info.svg" class="inject-me" /></figure>
+          <h2 class="heading h-02">Block Info Two</h2>
+          <h4 class="heading h-04">Lorem ipsum dolor sit amet, consectetr adipiscing elit. Cras tincidunt.</h4>
+          <p class="copy c-03">In eget mollis purus. Integer sapien turpis, facilisis sed ante ac, blandit fringilla orci. Nam eget eros non ante vulputate pulvinar eget vitae neque. Praesent sit amet nisi vitae velit gravida semper.</p>
+        </aside>
       </div>
     </section>
 
     <!-- QUOTES -->
     <section class="quotes row">
-      Quotes
+      <div class="site-inner">
+        <header>
+          <h1 class="heading h-quote">Graphic design will save the world right after rock and roll does.</h1>
+          <p class="copy c-author">David Carson</p>
+        </header>
+      </div>
     </section>
 
     <!-- OUR WORK -->
     <section class="our-work row">
-      Our Work
+      <div class="site-inner">
+        <header>
+          <h1 class="heading h-01">Our Work</h1>
+          <p class="copy c-01">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt dolor risus, nec convallis justo malesuada nec.</p>
+          <hr class="br" />
+        </header>
+      </div>
+
+      <div id="worksContainer">
+        <div class="grid-sizer"></div>
+        <div class="item"><figure><img src="images/ourworks/1.jpg" /></figure></div>
+        <div class="item"><figure><img src="images/ourworks/1.jpg" /></figure></div>
+        <div class="item"><figure><img src="images/ourworks/1.jpg" /></figure></div>
+        <div class="item"><figure><img src="images/ourworks/1.jpg" /></figure></div>
+        <div class="item"><figure><img src="images/ourworks/1.jpg" /></figure></div>
+        <div class="item"><figure><img src="images/ourworks/1.jpg" /></figure></div>
+      </div>
+
     </section>
 
     <!-- THE TEAM -->
@@ -90,7 +126,7 @@
 
   </section>
 
-
+  <div id="debug">.</div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.10.2.min.js"><\/script>');</script>
