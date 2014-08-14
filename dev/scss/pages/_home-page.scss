@@ -7,6 +7,7 @@
   padding: 20px;
   @include gridle_state(tablet) { background: $colorPink; &:before { content: "TABLET"; } }
   @include gridle_state(mobile) { background: $colorOlive; &:before { content: "MOBILE"; } }
+  @include gridle_state(mobile-small) { background: $colorBurgandy; &:before { content: "MOBILE  SMALL"; } }
 }
 
 
@@ -141,7 +142,6 @@
       margin-left: -5px;
       background: rgba($colorOlive, .3);
       @include transform(rotate(45deg));
-
     }
   }
 
@@ -168,12 +168,77 @@
 // -------------------------------------
 .our-work {
 
+  padding-bottom: 0;
+
   .item, .grid-sizer {
     width: 20%;
   }
   .item {
     figure {
       img { display: block; width: 100%; }
+    }
+  }
+
+  #worksFilters {
+    text-align: center;
+    margin-bottom: 60px;
+    @include clearfix;
+  }
+
+  .button {
+    @include opacity(.6);
+    &:hover { @include opacity(1); }
+    &.is-checked { @include opacity(1); }
+  }
+
+  figure {
+    overflow: hidden;
+    img {
+      @include transition(all 3s ease-out);
+    }
+  }
+
+  #worksContainer {
+    .item {
+      background: $colorBurgandy;
+      cursor: pointer;
+      @include killflicker;
+      figure {
+        @include transition(all .4s ease-out);
+      }
+      &:hover {
+        figure { @include opacity(.2); }
+        .info {
+          @include opacity(1);
+          @include transform(translateY(10px));
+          .c-01 {
+            @include transform(translateY(5px));
+          }
+        }
+        img {
+          @include transform(scale(1.2) rotate(5deg));
+        }
+      }
+      .info {
+        text-align: center;
+        @include size(100%);
+        @include position(absolute, 50% null null null);
+        @include transition(all .4s ease-out);
+        margin-top: -45px;
+        @include opacity(0);
+
+        .icon-eye {
+          margin: 0 auto;
+          @include size(50px 45px);
+          svg * { fill: $colorWhite; }
+        }
+      }
+
+      .copy { 
+        color: $colorWhite;
+        @include transition(all .4s ease-out);
+        &.c-02 { text-transform: uppercase; } 
+      }
     }
   }
 
@@ -189,9 +254,334 @@
       width: 50%;
     }
   }
+  @include gridle_state(mobile-small) { 
+    .button-set {
+      display: block;
+      float: left;
+      width: 48%;
+      margin: 0 1%;
+    }
+    .button {
+      width: 100%;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
 
 }
 
 
+// -------------------------------------
+// ★ MEET OUR TEAM
+// -------------------------------------
+.team {
+
+  .h-03 {
+    text-transform: uppercase;
+    color: black;
+    padding-top: 25px;
+    margin-bottom: 10px;
+  }
+  .h-04 {
+    color: $colorBlue;
+    margin-bottom: 35px;
+  }
+  .c-01 {
+    position: relative;
+    margin-top: 35px;
+    padding: 0 10px 25px 10px;
+    &:before {
+      content: "";
+      @include position(absolute, -21px null null 50%);
+      display: inline-block;
+      @include size(7px);
+      margin-left: -5px;
+      background: rgba($colorOlive, .8);
+      @include transform(rotate(45deg));
+    }
+  }
+  figure {
+    overflow: hidden;
+    img {
+      width: 100%;
+      @include transition(all 4s ease-out);
+    }
+  }
+
+  #teamContainer {
+    @include clearfix;
+  }
+
+  .item {
+    margin-bottom: 20px;
+    @include gridle(3);
+    img { display: block; }
+    .info {
+      text-align: center;
+      @include transition(all .4s ease-out);
+    }
+
+    &:hover {
+      .info {
+        background: rgba($colorMain, .1);
+      }
+      img {
+        @include transform(scale(1.1) translateY(-5px));
+      }
+    }
+  }
+
+  @include gridle_state(mobile) { 
+    .item {
+      width: 50%;
+    }
+  }
+  @include gridle_state(mobile-small) { 
+    .item {
+      width: 100%;
+    }
+  }
+
+}
+
+
+// -------------------------------------
+// ★ TESTIMONIALS
+// -------------------------------------
+.testimonials {
+  background: url(/images/testimonials-bg.jpg) no-repeat;
+  background-size: cover;
+  text-align: center;
+  figure {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+    figcaption {
+      .h-02 {
+      @include position(absolute, 50% null null null);
+        color: $colorWhite;
+        span {
+          padding-left: 5px;
+          color: $colorPink;
+          font-weight: 300;
+        }
+      }
+    }
+
+    img {
+      position: relative;
+      border-radius: 300px;
+      display: block;
+      margin: 0 auto;
+      @include transition(all .4s ease-out);
+      @include killflicker;
+    }
+
+    &:before, &:after {
+      @include transition(all .3s ease-out);
+    }
+
+    &:before {
+      @include opacity(0);
+      content: attr(data-name);
+      display: inline-block;
+      @include position(absolute, 50% 45px null null);
+      margin-top: -5px;
+      width: 300px;
+      text-align: right;
+      color: $colorWhite;
+      text-transform: uppercase;
+      font: {
+        family: $opensans;
+        size: 14px;
+        weight: 600;
+      }
+    }
+
+    &:after {
+      @include opacity(0);
+      content: attr(data-employer);
+      display: inline-block;
+      @include position(absolute, 50% null null 45px);
+      margin-top: -5px;
+      width: 300px;
+      text-align: left;
+      color: $colorPink;
+      text-transform: uppercase;
+      font: {
+        family: $opensans;
+        size: 14px;
+        weight: 300;
+      }
+    }
+
+  }
+
+  .h-04 {
+    text-transform: none;
+    color: $colorWhite;
+    line-height: 24px;
+    padding: 0 20px;
+  }
+
+  .testimonials-pager {
+    margin-top: 25px;
+    .swiper-pagination-switch {
+      display: inline-block;
+      @include size(10px);
+      border-radius: 180px;
+      background: none;
+      border: 2px solid $colorPink;
+      margin: 0 3px;
+      cursor: pointer;
+      @include box-sizing(border-box);
+      @include transition(all .3s ease-out);
+      &:hover {
+        background: rgba($colorPink, .4);
+      }
+    }
+
+    .swiper-active-switch {
+      background: $colorPink;
+    }
+  }
+
+
+  &:hover {
+    img {
+      @include transform(scale(.9));
+    }
+
+    figure:before {
+      @include transform(translateX(-40px));
+      @include opacity(1);
+    }
+    figure:after {
+      @include transform(translateX(40px));
+      @include opacity(1);
+    }
+  }
+
+  // Responsive
+  @include gridle_state(mobile) {
+    figure {
+      width: 100%;
+      &:before, &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+
+
+// -------------------------------------
+// ★ CONTACT
+// -------------------------------------
+.contact {
+
+  .half-col {
+    .h-02 {
+      margin-bottom: 15px;
+    }
+    .item {
+      @include clearfix;
+      .h-02 { color: $colorMain; padding-top: 15px; }
+    }
+    svg {
+      @include size(44px);
+      @include opacity(.2);
+      float: left
+    }
+  }
+
+  .input {
+    input, textarea {
+      width: 100%;
+      background: none;
+      outline: none;
+      padding: 10px;
+      border: 2px solid $colorOlive;
+      margin-bottom: 10px;
+      font: {
+        family: $opensans;
+        size: 12px;
+        weight: 300;
+      }
+      line-height: 18px;
+      color: $colorMain;
+      @include box-sizing(border-box);
+      @include transition(all .4s ease-out);
+      &:focus {
+        border: 2px solid $colorBlue;
+      }
+    }
+    textarea {
+      min-height: 120px;
+    }
+  }
+
+  .form-result {
+    @include antialias;
+    &.success {
+      font: {
+        family: $opensans;
+        weight: 600;
+        size: 12px;
+      }
+      color: $colorBlue;
+      padding: 20px 0;
+    }
+    &.error {
+      font: {
+        family: $opensans;
+        weight: 600;
+        size: 12px;
+      }
+      color: $colorBurgandy;
+      padding: 20px 0;
+    }
+  }
+
+  // Responsive
+  @include gridle_state(mobile) {
+
+  }
+}
+
+
+// -------------------------------------
+// ★ Map
+// -------------------------------------
+.footer {
+  padding-top: 0;
+  .g-map {
+    position: relative;
+    &:before {
+      content: "";
+      display: block;
+      @include size(100% 19px);
+      @include position(absolute, -10px null null null);
+      z-index: 50;
+      background: url(/images/hero-slide-bar.png) repeat-x;
+    }
+    &:after {
+      content: "";
+      display: block;
+      @include size(100% 19px);
+      @include position(absolute, null null -6px null);
+      z-index: 50;
+      background: url(/images/hero-slide-bar.png) repeat-x;
+    }
+  }
+  #map {
+    @include size(100% 400px);
+  }
+
+  .copyright {
+    margin: 20px 0;
+  }
+
+}
 
 

@@ -1,5 +1,5 @@
 (function() {
-  var loadApplication, mobileNav, mobileScripts, ourWorks, svgInjector;
+  var formSubscribe, googleMap, loadApplication, mobileNav, mobileScripts, ourWorks, svgInjector, testimonialsSwiper;
 
   loadApplication = function() {
     var styles;
@@ -8,7 +8,10 @@
     $(svgInjector);
     $(mobileScripts);
     $(mobileNav);
-    return $(ourWorks);
+    $(ourWorks);
+    $(testimonialsSwiper);
+    $(formSubscribe);
+    return $(googleMap);
   };
 
   svgInjector = function() {
@@ -55,13 +58,195 @@
   };
 
   ourWorks = function() {
-    var $container;
-    $container = $('#worksContainer');
-    return $container.isotope({
-      itemSelector: ".item",
+    var filterContainer, worksContainer, worksItem;
+    worksContainer = $('#worksContainer');
+    filterContainer = $('#worksFilters');
+    worksItem = $('#worksContainer .item');
+    worksContainer.isotope({
+      itemSelector: '.item',
+      filter: '*',
+      animationEngine: 'best-available',
       masonry: {
-        columnWidth: ".grid-sizer"
+        columnWidth: '.grid-sizer'
       }
+    });
+    filterContainer.on('click', 'button', function() {
+      var filterValue;
+      filterValue = $(this).attr('data-filter');
+      return worksContainer.isotope({
+        filter: filterValue
+      });
+    });
+    $('.button-group').each(function(i, buttonGroup) {
+      buttonGroup = $(buttonGroup);
+      return buttonGroup.on('click', 'button', function() {
+        $buttonGroup.find('.is-checked').removeClass('is-checked');
+        return $(this).addClass('is-checked');
+      });
+    });
+    return worksItem.on('click', function() {
+      var url;
+      url = $(this).data('url');
+      return window.open(url, '_blank');
+    });
+  };
+
+  testimonialsSwiper = function() {
+    var mySwiper;
+    return mySwiper = $('.testimonials-swiper').swiper({
+      mode: 'horizontal',
+      loop: true,
+      calculateHeight: true,
+      pagination: '.testimonials-pager',
+      paginationClickable: true
+    });
+  };
+
+  formSubscribe = function() {
+    var form, formMessages, hasHtml5Validation;
+    form = $('#subscribe');
+    formMessages = $('.form-result');
+    hasHtml5Validation = function() {
+      return typeof document.createElement("input").checkValidity === "function";
+    };
+    if (hasHtml5Validation()) {
+      return form.submit(function(e) {
+        var formData;
+        if (!this.checkValidity()) {
+          e.preventDefault();
+          $(this).addClass("invalid");
+          return $("#status").html("invalid");
+        } else {
+          $(this).removeClass("invalid");
+          e.preventDefault();
+          formData = $(form).serialize();
+          return $.ajax({
+            type: "POST",
+            url: $(form).attr("action"),
+            data: formData
+          }).done(function(response) {
+            if (response === "success") {
+              $('.hide-me').fadeOut();
+              $(formMessages).removeClass("error");
+              $(formMessages).addClass("success");
+              $(formMessages).text('Thanks for contacting us!');
+              $("#name").val("");
+              return $("#number").val("");
+            } else {
+              $(formMessages).removeClass("success");
+              $(formMessages).addClass("error");
+              return $(formMessages).text("Oops! An error occured please check all the fields.");
+            }
+          }).fail(function(data) {
+            return $(formMessages).text("Oops! An error occured please check all the fields.");
+          });
+        }
+      });
+    }
+  };
+
+  googleMap = function() {
+    var map, mapElement, mapOptions, marker, myLatlng;
+    myLatlng = new google.maps.LatLng(45.3558359, -122.599946);
+    mapOptions = {
+      zoom: 16,
+      panControl: false,
+      mapTypeControl: false,
+      center: myLatlng,
+      styles: [
+        {
+          featureType: "administrative",
+          elementType: "all",
+          stylers: [
+            {
+              visibility: "on"
+            }, {
+              saturation: -100
+            }, {
+              lightness: 20
+            }
+          ]
+        }, {
+          featureType: "road",
+          elementType: "all",
+          stylers: [
+            {
+              visibility: "on"
+            }, {
+              saturation: -100
+            }, {
+              lightness: 40
+            }
+          ]
+        }, {
+          featureType: "water",
+          elementType: "all",
+          stylers: [
+            {
+              visibility: "on"
+            }, {
+              saturation: -10
+            }, {
+              lightness: 30
+            }
+          ]
+        }, {
+          featureType: "landscape.man_made",
+          elementType: "all",
+          stylers: [
+            {
+              visibility: "simplified"
+            }, {
+              saturation: -60
+            }, {
+              lightness: 10
+            }
+          ]
+        }, {
+          featureType: "landscape.natural",
+          elementType: "all",
+          stylers: [
+            {
+              visibility: "simplified"
+            }, {
+              saturation: -60
+            }, {
+              lightness: 60
+            }
+          ]
+        }, {
+          featureType: "poi",
+          elementType: "all",
+          stylers: [
+            {
+              visibility: "off"
+            }, {
+              saturation: -100
+            }, {
+              lightness: 60
+            }
+          ]
+        }, {
+          featureType: "transit",
+          elementType: "all",
+          stylers: [
+            {
+              visibility: "off"
+            }, {
+              saturation: -100
+            }, {
+              lightness: 60
+            }
+          ]
+        }
+      ]
+    };
+    mapElement = document.getElementById("map");
+    map = new google.maps.Map(mapElement, mapOptions);
+    return marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: '/images/map-marker.png'
     });
   };
 

@@ -7,19 +7,24 @@ $buttonTextSize: 12px;
 
 
 $buttons:
-  (success, green),
-  (danger, red),
-  (warning, yellow);
+  (normal, $colorBurgandy),
+  (alternative, $colorOlive);
 
 .button {
   display: inline-block;
   font: {
-    family: $helvetica;
+    family: $opensans;
     size: $buttonTextSize;
-    weight: 400;
+    weight: 700;
   }
   text-transform: uppercase;
   padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  color: $colorWhite;
+  outline: none;
+  @include antialias;
+  @include appearance(none);
   @include transition(all .3s ease-in-out);
   @each $button, $buttonColor in $buttons {
     &.#{$button} {
@@ -27,6 +32,7 @@ $buttons:
       color: white;
     }
   }
+
   &.rounded { border-radius: 3px; }
 
   &:hover {
