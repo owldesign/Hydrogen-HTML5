@@ -3,6 +3,8 @@
 HTML5 One Page Template. Responsive. Built using Grunt, CoffeeScript and SCSS.
 ***
 [Visit Demo Site](http://owl-design.net/demos/hydrogen/)
+This template is part of The Periodic Table of Web Templates
+[Visit PTWT](http://owl-design.net/ptwt/)
 
 <b>Whats inside:</b>
 * HMLT5 & CSS3
