@@ -21,19 +21,21 @@
   <section class="page-wrapper">
 
   <!-- HERO -->
-    <section class="header row">
+    <section class="header row" id="home">
       <div class="site-inner">
-        <header>
+        <header class="banner">
+          <div class="site-inner">
           <h1 class="logo"><img src="images/logo.svg" class="inject-me" /></h1>
 
           <div class="menu-arrow"><span class="text">MENU</span><span class="left"></span><span class="right"></span></div>
-          <nav class="primary-nav">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Work</a>
-            <a href="#">Our Team</a>
-            <a href="#">Contact</a>
-          </nav>
+            <nav class="primary-nav">
+              <a href="#home">Home</a>
+              <a href="#about">About</a>
+              <a href="#work">Work</a>
+              <a href="#team">Our Team</a>
+              <a href="#contact">Contact</a>
+            </nav>
+          </div>
         </header>
 
         <article class="hero">
@@ -47,7 +49,7 @@
     </section>
 
     <!-- WHO ARE WE -->
-    <section class="about row">
+    <section class="about row" id="about">
       <div class="site-inner">
         <header>
           <h1 class="heading h-01">Who are we?</h1>
@@ -82,7 +84,7 @@
     </section>
 
     <!-- OUR WORK -->
-    <section class="our-work row">
+    <section class="our-work row" id="work">
       <div class="site-inner">
         <header>
           <h1 class="heading h-01">Our Work</h1>
@@ -189,7 +191,7 @@
     </section>
 
     <!-- THE TEAM -->
-    <section class="team row">
+    <section class="team row" id="team">
       <div class="site-inner">
         <header>
           <h1 class="heading h-01">Meet Our Team</h1>
@@ -259,7 +261,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="contact row">
+    <section class="contact row" id="contact">
       <div class="site-inner">
         <header>
           <h1 class="heading h-01">Contact Us</h1>
@@ -278,7 +280,7 @@
           <h2 class="heading h-02">Contact Us</h2>
 
           <div class="contact-form">
-            <form id="subscribe" action="/js/process.php" method="POST">
+            <form id="subscribe" action="js/process.php" method="POST">
               <div class="input hide-me">
                 <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" />
               </div>
@@ -307,12 +309,18 @@
       </div>
     </section>
 
-    <div id="goUp"></div>
+    <div id="toTop"></div>
 
+    <button type="button" class="navTrigger"><span></span></button>
+    <nav class="footer-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#team">Our Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
   </section>
-
-  <div id="debug">.</div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.10.2.min.js"><\/script>');</script>

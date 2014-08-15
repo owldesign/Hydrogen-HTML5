@@ -1,5 +1,5 @@
 (function() {
-  var formSubscribe, googleMap, loadApplication, mobileNav, mobileScripts, ourWorks, svgInjector, testimonialsSwiper;
+  var footerNav, formSubscribe, googleMap, loadApplication, mobileNav, mobileScripts, ourWorks, scrollToTop, svgInjector, testimonialsSwiper;
 
   loadApplication = function() {
     var styles;
@@ -8,10 +8,27 @@
     $(svgInjector);
     $(mobileScripts);
     $(mobileNav);
-    $(ourWorks);
+    $(footerNav);
     $(testimonialsSwiper);
     $(formSubscribe);
-    return $(googleMap);
+    $(googleMap);
+    $(scrollToTop);
+    $(window).load(function() {
+      return $(ourWorks);
+    });
+    return $('a[href*=#]:not([href=#])').on('click', function(e) {
+      var target;
+      e.preventDefault();
+      if (location.pathname.replace(/^\//, "") === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+        target = $(this.hash);
+        target = (target.length ? target : $('[name=' + this.hash.slice(1) + ']'));
+        if (target.length) {
+          return $('html,body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+        }
+      }
+    });
   };
 
   svgInjector = function() {
@@ -24,6 +41,50 @@
     if (Modernizr.touch) {
       return FastClick.attach(document.body);
     }
+  };
+
+  footerNav = function() {
+    var footerNavContainer, footerNavTrigger, offset;
+    offset = $('.header').height();
+    footerNavContainer = $('.footer-nav');
+    footerNavTrigger = $('.navTrigger');
+    window.addEventListener('scroll', function() {
+      if ($(window).scrollTop() > offset) {
+        return $('.navTrigger').addClass('is-fixed');
+      } else {
+        footerNavTrigger.removeClass('is-fixed');
+        footerNavContainer.removeClass('is-visible');
+        return footerNavTrigger.removeClass('menu-is-open');
+      }
+    });
+    return footerNavTrigger.on('click', function() {
+      $(this).toggleClass('menu-is-open');
+      return footerNavContainer.toggleClass('is-visible');
+    });
+  };
+
+  scrollToTop = function() {
+    var $back_to_top, offset, offset_opacity, scroll_top_duration;
+    offset = $('.header').height();
+    offset_opacity = 1200;
+    scroll_top_duration = 700;
+    $back_to_top = $('#toTop');
+    window.addEventListener('scroll', function() {
+      if ($(this).scrollTop() > offset) {
+        $back_to_top.addClass("is-visible");
+      } else {
+        $back_to_top.removeClass("is-visible fade-out");
+      }
+      if ($(this).scrollTop() > offset_opacity) {
+        return $back_to_top.addClass("fade-out");
+      }
+    });
+    return $back_to_top.on("click", function(event) {
+      event.preventDefault();
+      return $("body,html").animate({
+        scrollTop: 0
+      }, scroll_top_duration);
+    });
   };
 
   mobileNav = function() {
@@ -80,7 +141,7 @@
     $('.button-group').each(function(i, buttonGroup) {
       buttonGroup = $(buttonGroup);
       return buttonGroup.on('click', 'button', function() {
-        $buttonGroup.find('.is-checked').removeClass('is-checked');
+        buttonGroup.find('.is-checked').removeClass('is-checked');
         return $(this).addClass('is-checked');
       });
     });
@@ -131,7 +192,10 @@
               $(formMessages).addClass("success");
               $(formMessages).text('Thanks for contacting us!');
               $("#name").val("");
-              return $("#number").val("");
+              $("#number").val("");
+              return $('html,body').animate({
+                scrollTop: $('.contact-form').offset().top - 70
+              });
             } else {
               $(formMessages).removeClass("success");
               $(formMessages).addClass("error");
@@ -246,7 +310,7 @@
     return marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
-      icon: '/images/map-marker.png'
+      icon: 'images/map-marker.png'
     });
   };
 

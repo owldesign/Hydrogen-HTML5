@@ -1,13 +1,28 @@
 loadApplication = ->
   styles = ["display: block","background: #f7cd81","color: white","padding: 20px 20px 20px 20px","text-align: center","font-weight: normal","font-size: 20px","line-height: 60px"].join(';')
   console.log '%c Hydrogen!', styles, 'Has loaded.'
+
   $(svgInjector)
   $(mobileScripts)
   $(mobileNav)
-  $(ourWorks)
+  $(footerNav)
   $(testimonialsSwiper)
   $(formSubscribe)
   $(googleMap)
+  $(scrollToTop)
+  $(window).load ->
+    $(ourWorks)
+
+  $('a[href*=#]:not([href=#])').on 'click', (e) ->
+    e.preventDefault()
+    if location.pathname.replace(/^\//, "") is @pathname.replace(/^\//, '') and location.hostname is @hostname
+      target = $(@hash)
+      target = (if target.length then target else $('[name=' + @hash.slice(1) + ']'))
+      if target.length
+        $('html,body').animate
+          scrollTop: target.offset().top
+        , 1000
+
 
 svgInjector = ->
   mySVGsToInject = document.querySelectorAll('img.inject-me')
@@ -17,7 +32,43 @@ mobileScripts = ->
   if Modernizr.touch
     FastClick.attach(document.body)
  
+footerNav = ->
+  offset = $('.header').height()
+  footerNavContainer = $('.footer-nav') 
+  footerNavTrigger = $('.navTrigger') 
+
+  window.addEventListener 'scroll', ->
+    if $(window).scrollTop() > offset
+      $('.navTrigger').addClass 'is-fixed'
+    else 
+      footerNavTrigger.removeClass 'is-fixed'
+      footerNavContainer.removeClass 'is-visible'
+      footerNavTrigger.removeClass 'menu-is-open'
+
+  footerNavTrigger.on 'click', ->
+    $(@).toggleClass 'menu-is-open'
+    footerNavContainer.toggleClass 'is-visible'
+
+scrollToTop = ->
+  offset = $('.header').height()
+  offset_opacity = 1200
+  scroll_top_duration = 700
+  $back_to_top = $('#toTop')
+
+  window.addEventListener 'scroll', ->
+    (if ($(@).scrollTop() > offset) then $back_to_top.addClass("is-visible") else $back_to_top.removeClass("is-visible fade-out"))
+    $back_to_top.addClass "fade-out"  if $(@).scrollTop() > offset_opacity
+
+  #smooth scroll to top
+  $back_to_top.on "click", (event) ->
+    event.preventDefault()
+    $("body,html").animate
+      scrollTop: 0
+    , scroll_top_duration
+
+
 mobileNav = ->
+  # Mobile Navigation
   trigger = $('.menu-arrow')
   navigation = $('.primary-nav')
   trigger.on 'click', ->
@@ -61,7 +112,7 @@ ourWorks = ->
   $('.button-group').each (i, buttonGroup) ->
     buttonGroup = $(buttonGroup)
     buttonGroup.on 'click', 'button', ->
-      $buttonGroup.find('.is-checked').removeClass 'is-checked'
+      buttonGroup.find('.is-checked').removeClass 'is-checked'
       $(@).addClass 'is-checked'
 
   # Hotlinking
@@ -105,10 +156,10 @@ formSubscribe = ->
             $('.hide-me').fadeOut()
             $(formMessages).removeClass "error"
             $(formMessages).addClass "success"
-
             $(formMessages).text 'Thanks for contacting us!'
             $("#name").val ""
             $("#number").val ""
+            $('html,body').animate scrollTop: $('.contact-form').offset().top - 70
           else
             $(formMessages).removeClass "success"
             $(formMessages).addClass "error"
@@ -237,7 +288,7 @@ googleMap = ->
   marker = new google.maps.Marker(
     position: myLatlng
     map: map
-    icon: '/images/map-marker.png'
+    icon: 'images/map-marker.png'
   )
 
 

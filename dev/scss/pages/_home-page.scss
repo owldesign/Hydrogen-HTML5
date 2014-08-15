@@ -1,21 +1,8 @@
-// DEBUGING ONLY - DELETE FOR PRODUCTION
-#debug {
-  @include position(fixed, null null 0 0);
-  color: white;
-  font-family: $opensans;
-  font-weight: 800;
-  padding: 20px;
-  @include gridle_state(tablet) { background: $colorPink; &:before { content: "TABLET"; } }
-  @include gridle_state(mobile) { background: $colorOlive; &:before { content: "MOBILE"; } }
-  @include gridle_state(mobile-small) { background: $colorBurgandy; &:before { content: "MOBILE  SMALL"; } }
-}
-
-
 // -------------------------------------
 // ★ HEADER
 // -------------------------------------
 .header {
-  background: url(/images/hero-bg.jpg) no-repeat top center;
+  background: url(../images/hero-bg.jpg) no-repeat top center;
   background-size: cover;
   padding: 0px;
   header { @include clearfix; margin-bottom: 50px; }
@@ -36,6 +23,7 @@
       font-weight: 600;
       text-transform: uppercase;
       &:last-child { padding-right: 0; }
+      @include killios;
     }
   }
 
@@ -60,6 +48,7 @@
     color: $colorWhite;
     font-weight: 600;
     text-transform: uppercase;
+    @include killios;
     &:hover {
       color: $colorOlive;
     }
@@ -97,6 +86,110 @@
 }
 
 // -------------------------------------
+// ★ FOOTER NAVIGATION
+// -------------------------------------
+.footer-nav {
+  @include position(fixed, null 20px 20px null);
+  padding: 10px 30px 10px 10px;
+  width: 120px;
+  background: $colorMain;
+  border-radius: 5px;
+  @include transform(scale(0));
+  @include transform-origin(100% 100%);
+  @include transition(transform .3s, visibility .3s);
+  @include killflicker;
+  &.is-visible {
+    visibility: visible;
+    @include transform(scale(1));
+    @include transition(transform .3s, visibility .3s);
+  }
+  a {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    color: $colorWhite;
+    @include killios;
+  }
+}
+.navTrigger {
+  @include position(fixed, null 20px 20px null);
+  @include size(44px);
+  background: $colorMain;
+  border-radius: 5px;
+  cursor: pointer;
+  visibility: hidden;
+  border: none;
+  outline: none;
+  z-index: 3;
+  @include transform(scale(0));
+  @include transition(transform .3s, visibility .3s);
+  @include killflicker;
+  @include killios;
+
+  &.is-fixed {
+    visibility: visible;
+    @include transition(all 0s);
+    @include transform(scale(1));
+    @include animation(bounce-in .3s linear);
+  }
+
+  span {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: $colorWhite;
+    top: 50%;
+    margin-top: -1px;
+    left: 50%;
+    margin-left: -10px;
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    transition: background 0.3s;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      background: inherit;
+      width: 100%;
+      height: 100%;
+
+      @include transform(translateZ(0));
+      @include killflicker;
+      @include transition(transform .3s, background 0s);
+    }
+    &:before, &:after { @include transform(rotate(0)); }
+    &:before { top: -6px; }
+    &:after { bottom: -6px; }
+  }
+
+  &.menu-is-open span {
+    background: rgba($colorWhite, 0);
+    &:before, &:after { background: rgba($colorWhite, 1); }
+    &:before {
+      top: 0;
+      @include transform(rotate(135deg));
+    }
+    &:after {
+      bottom: 0;
+      @include transform(rotate(225deg));
+    }
+  }
+}
+
+@include keyframes(slide-in) {
+  0% { @include transform(translateX(100px)); }
+  100% { @include transform(translateY(0)); }
+}
+
+@include keyframes(bounce-in) {
+  0% { @include transform(scale(0)); }
+  60% { @include transform(scale(1.2)); }
+  100% { @include transform(scale(1)); }
+}
+
+// -------------------------------------
 // ★ WHO ARE WE?
 // -------------------------------------
 .about {
@@ -114,7 +207,7 @@
 // ★ QUOTES
 // -------------------------------------
 .quotes {
-  background: url(/images/quote-bg.jpg) no-repeat;
+  background: url(../images/quote-bg.jpg) no-repeat;
   background-size: cover;
   header { margin: 0; }
   
@@ -183,6 +276,7 @@
     text-align: center;
     margin-bottom: 60px;
     @include clearfix;
+    @include killios;
   }
 
   .button {
@@ -203,6 +297,7 @@
       background: $colorBurgandy;
       cursor: pointer;
       @include killflicker;
+      @include killios;
       figure {
         @include transition(all .4s ease-out);
       }
@@ -315,6 +410,7 @@
   .item {
     margin-bottom: 20px;
     @include gridle(3);
+    @include killflicker;
     img { display: block; }
     .info {
       text-align: center;
@@ -332,9 +428,7 @@
   }
 
   @include gridle_state(mobile) { 
-    .item {
-      width: 50%;
-    }
+    .item { width: 50%; }
   }
   @include gridle_state(mobile-small) { 
     .item {
@@ -349,7 +443,7 @@
 // ★ TESTIMONIALS
 // -------------------------------------
 .testimonials {
-  background: url(/images/testimonials-bg.jpg) no-repeat;
+  background: url(../images/testimonials-bg.jpg) no-repeat;
   background-size: cover;
   text-align: center;
   figure {
@@ -470,6 +564,9 @@
         display: none;
       }
     }
+    &:hover {
+      img { @include transform(scale(1)); }
+    }
   }
 }
 
@@ -502,6 +599,7 @@
       outline: none;
       padding: 10px;
       border: 2px solid $colorOlive;
+      border-radius: 0;
       margin-bottom: 10px;
       font: {
         family: $opensans;
@@ -512,6 +610,8 @@
       color: $colorMain;
       @include box-sizing(border-box);
       @include transition(all .4s ease-out);
+      @include appearance(none);
+      // @include killios;
       &:focus {
         border: 2px solid $colorBlue;
       }
@@ -520,6 +620,8 @@
       min-height: 120px;
     }
   }
+
+  .button { @include killios; }
 
   .form-result {
     @include antialias;
@@ -541,11 +643,10 @@
       color: $colorBurgandy;
       padding: 20px 0;
     }
-  }
 
-  // Responsive
-  @include gridle_state(mobile) {
-
+    @include gridle_state(mobile-small) {
+      &.error, &.success { font-size: 10px; }
+    }
   }
 }
 
@@ -554,7 +655,7 @@
 // ★ Map
 // -------------------------------------
 .footer {
-  padding-top: 0;
+  padding: 0;
   .g-map {
     position: relative;
     &:before {
@@ -563,7 +664,7 @@
       @include size(100% 19px);
       @include position(absolute, -10px null null null);
       z-index: 50;
-      background: url(/images/hero-slide-bar.png) repeat-x;
+      background: url(../images/hero-slide-bar.png) repeat-x;
     }
     &:after {
       content: "";
@@ -571,17 +672,17 @@
       @include size(100% 19px);
       @include position(absolute, null null -6px null);
       z-index: 50;
-      background: url(/images/hero-slide-bar.png) repeat-x;
+      background: url(../images/hero-slide-bar.png) repeat-x;
     }
   }
-  #map {
-    @include size(100% 400px);
-  }
+  #map { @include size(100% 400px); }
 
-  .copyright {
-    margin: 20px 0;
-  }
+  .copyright { margin: 20px 0; }
 
+  // Responsive
+  @include gridle_state(mobile-small) {
+    .copyright { font-size: 10px; text-align: center; }
+  }
 }
 
 

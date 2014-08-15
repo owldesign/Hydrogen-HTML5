@@ -29,3 +29,7 @@ $default-feature: max-width;
   min-width: 767px,
   max-width: 1024px
 ));
+@include gridle_register_state (large, (
+  min-width: 1170px,
+  max-width: 1600px
+));

@@ -42,6 +42,7 @@ $shapeColor: $colorBlue;
   cursor: pointer;
   z-index: 40;
   margin: 0 auto;
+  @include killios;
   @include size(33px 30px);
   .text {
     display: block;
@@ -61,6 +62,7 @@ $shapeColor: $colorBlue;
     @include size(20px 3px);
     background: $colorWhite;
     @include transition(all .3s ease-out);
+    @include killflicker;
   }
   .left {
     left: 0;
@@ -77,7 +79,7 @@ $shapeColor: $colorBlue;
       @include transform(translateY(8px));
     }
     .left, .right {
-      @include opacity(.3);
+      @include opacity(0);
       @include transform(rotate(90deg));
     }
     .left { left: -15px; }
@@ -89,7 +91,7 @@ $shapeColor: $colorBlue;
 .menu-arrow.open {
 
   .text { @include opacity(0); }
-  .left, .right { @include transform(translateY(0)); }
+  .left, .right { @include transform(translateY(0)); @include opacity(.5); }
   .left {
     left: 6px;
     @include transform(rotate(45deg));
@@ -100,3 +102,26 @@ $shapeColor: $colorBlue;
   }
 }
 
+// Back To Top
+#toTop {
+  @include position(fixed, null 75px 20px null);
+  display: inline-block;
+  @include size(44px);
+  background: $colorPink url(../images/icon_arrow_up.svg) no-repeat center 50%;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 5px;
+  @include transition(all .3s ease-out);
+  @include killios;
+
+  &.is-visible { 
+    visibility: visible;
+    opacity: 1;
+    @include animation(bounce-in .3s linear);
+  }
+
+  .no-touch &:hover {
+    background-color: rgba($colorPink, 1);
+    opacity: 1;
+  }
+}

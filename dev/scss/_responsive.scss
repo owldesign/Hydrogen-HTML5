@@ -10,6 +10,18 @@
 // ★ Mobile Styles
 // -------------------------------------
 @include gridle_state(mobile) {
+
+  // Turning off hover states on touch devices
+  .touch {
+    // Team
+    .team .item {
+      &:hover {
+        .info { background: transparent; }
+        img { @include transform(scale(1) translateY(0px)); }
+      }
+    }
+  }
+
   .site-inner { width: $mobileWidth; padding: 0 20px; }
   .br { width: 100%; }
 
