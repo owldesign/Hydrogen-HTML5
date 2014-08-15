@@ -1,16 +1,22 @@
-Nutshell
+1. Hydrogen
 ========
-Nutshell is a front-end HTML5 starter. Development is automated using GRUNT to compile SCSS and CoffeeScript files.
-
+HTML5 One Page Template. Responsive. Built using Grunt, CoffeeScript and SCSS.
+***
+[Visit Demo Site](http://owl-design.net/demos/hydrogen/)
 
 <b>Whats inside:</b>
-* GRUNT
-* SCSS
-* CoffeeScript
+* HMLT5 & CSS3
+* Fully Responsive
+* SVG's
+* Isotope Filtering
+* Contact Form
+* Google Map
+* Etc..
 
 ***
 
 <b>Usage:</b>
+If you would like to use provide scss and coffeescript files follow the steps bellow.
 
 * Clone the repo, go to your project directory and run ```apm install```. This will install all the GRUNT dependencies.
 * In your terminal run ```grunt``` to compile your SCSS and CoffeeScript files.
@@ -34,4 +40,5 @@ All production files are located in the ```app``` directory. Upload all the cont
 
 ***
 
-### Happy Coding
+### Licence
+Use how you want. You can use it for commercial purposes just don't try to sell it as is.
