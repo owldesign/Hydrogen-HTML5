@@ -132,7 +132,9 @@ a:hover { color: white; }
 .header .contact-trigger:before, .header .contact-trigger:after { content: ""; position: relative; top: -3px; display: inline-block; background: #fdfdfd; height: 1px; width: 100px; }
 .header .contact-trigger:before { right: 10px; }
 .header .contact-trigger:after { left: 10px; }
-@media screen and (min-width: 767px) and (max-width: 1024px) { .header .c-hero { padding: 0 90px; } }
+@media screen and (min-width: 767px) and (max-width: 1024px) { .header .c-hero { padding: 0 90px; }
+  .header .logo { padding-left: 20px; }
+  .header .primary-nav { padding-right: 20px; } }
 @media screen and (min-width: 320px) and (max-width: 767px) { .header .primary-nav { display: none; float: none; width: 100%; margin: 0; }
   .header .primary-nav > a { text-align: center; display: block; padding: 10px 0 !important; }
   .header .h-hero { margin-top: 30px; }

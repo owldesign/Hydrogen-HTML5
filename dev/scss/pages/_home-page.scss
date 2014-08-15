@@ -66,6 +66,8 @@
   // Responsive
   @include gridle_state(tablet) { 
     .c-hero { padding: 0 90px; } 
+    .logo { padding-left: 20px;  }
+    .primary-nav { padding-right: 20px;  }
   }
   @include gridle_state(mobile) { 
     .primary-nav {
