@@ -6,8 +6,11 @@
   width: $desktopWidth;
   margin-left: auto;
   margin-right: auto;
-  @include gridle_container();
+  box-sizing: border-box;
   @include transition(all .3s ease-out);
+  @media screen and (max-width: 1024px) and (min-width: 767px) {
+    width: $tabletWidth;
+  }
 }
 
 .row {
@@ -16,16 +19,27 @@
     text-align: center;
     margin-bottom: 60px;
     p { padding: 0px 230px; }
-    @include gridle_state(tablet) { p { padding: 0px 170px; } }
-    @include gridle_state(mobile) { p { padding: 0; } }
+    @media screen and (min-width: 767px) and (max-width: 510px) { p { padding: 0px 170px; } }
+    @media screen and (min-width: 320px) and (max-width: 767px) { p { padding: 0; } }
   }
 }
 
+.half-col-container {
+  @include clearfix;
+}
 
 .half-col {
-  @include gridle(6);
-  @include gridle(12, 'mobile-small');
-  @include gridle_state(mobile) {
+  width: 50%;
+  float: left;
+  padding: 0 10px;
+  box-sizing: border-box;
+  @media screen and (min-width: 320px) and (max-width: 510px) {
+    float: none;
+    width: 100%;
+  }
+  // @include gridle(6);
+  // @include gridle(12, 'mobile-small');
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     margin-bottom: 40px;
     &:last-child { margin-bottom: 0; }
   }

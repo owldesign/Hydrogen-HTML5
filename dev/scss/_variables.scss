@@ -3,9 +3,17 @@
 // -------------------------------------
 @import "mixins"; // Custom mixins, functions, etc
 
+// Sizes
+$desktopWidth: em(960);
+$tabletWidth: em(767);
+$mobileWidth: 100%;
+
+$column: 90px;
+$gutter: 20px;
+$grid-columns: 12;
+
 // Colors
 $colorMain: #696969;
-
 $colorBurgandy: #926d7e;
 $colorOlive: #dae0d6;
 $colorWhite: #fdfdfd;

@@ -56,20 +56,21 @@
           <p class="copy c-01">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt dolor risus, nec convallis justo malesuada nec.</p>
           <hr class="br" />
         </header>
+        <section class="half-col-container">
+          <aside class="half-col">
+            <figure class="aside-icon"><img src="images/icon_thumb.svg" class="inject-me" /></figure>
+            <h2 class="heading h-02">Block Info One</h2>
+            <h4 class="heading h-04">Lorem ipsum dolor sit amet, consectetr adipiscing elit. Cras tincidunt.</h4>
+            <p class="copy c-03">In eget mollis purus. Integer sapien turpis, facilisis sed ante ac, blandit fringilla orci. Nam eget eros non ante vulputate pulvinar eget vitae neque. Praesent sit amet nisi vitae velit gravida semper.</p>
+          </aside>
 
-        <aside class="half-col">
-          <figure class="aside-icon"><img src="images/icon_thumb.svg" class="inject-me" /></figure>
-          <h2 class="heading h-02">Block Info One</h2>
-          <h4 class="heading h-04">Lorem ipsum dolor sit amet, consectetr adipiscing elit. Cras tincidunt.</h4>
-          <p class="copy c-03">In eget mollis purus. Integer sapien turpis, facilisis sed ante ac, blandit fringilla orci. Nam eget eros non ante vulputate pulvinar eget vitae neque. Praesent sit amet nisi vitae velit gravida semper.</p>
-        </aside>
-
-        <aside class="half-col">
-          <figure class="aside-icon"><img src="images/icon_info.svg" class="inject-me" /></figure>
-          <h2 class="heading h-02">Block Info Two</h2>
-          <h4 class="heading h-04">Lorem ipsum dolor sit amet, consectetr adipiscing elit. Cras tincidunt.</h4>
-          <p class="copy c-03">In eget mollis purus. Integer sapien turpis, facilisis sed ante ac, blandit fringilla orci. Nam eget eros non ante vulputate pulvinar eget vitae neque. Praesent sit amet nisi vitae velit gravida semper.</p>
-        </aside>
+          <aside class="half-col">
+            <figure class="aside-icon"><img src="images/icon_info.svg" class="inject-me" /></figure>
+            <h2 class="heading h-02">Block Info Two</h2>
+            <h4 class="heading h-04">Lorem ipsum dolor sit amet, consectetr adipiscing elit. Cras tincidunt.</h4>
+            <p class="copy c-03">In eget mollis purus. Integer sapien turpis, facilisis sed ante ac, blandit fringilla orci. Nam eget eros non ante vulputate pulvinar eget vitae neque. Praesent sit amet nisi vitae velit gravida semper.</p>
+          </aside>
+        </section>
       </div>
     </section>
 
@@ -268,34 +269,35 @@
           <p class="copy c-01">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt dolor risus, nec convallis justo malesuada nec.</p>
           <hr class="br" />
         </header>
+        
+        <section class="half-col-container">
+          <aside class="half-col">
+            <h2 class="heading h-02">Contact Info</h2>
+            <div class="item"><img src="images/icon_pin.svg" class="inject-me" /><h2 class="heading h-02 h-address">564 N Albert Street. Portland, Or 97266 USA</h2></div>
+            <div class="item"><img src="images/icon_phone.svg" class="inject-me" /><h2 class="heading h-02 h-phone">800.564.1975</h2></div>
+            <div class="item"><img src="images/icon_mail.svg" class="inject-me" /><h2 class="heading h-02 h-email">info@hydrogen.com</h2></div>
+          </aside>
 
-        <aside class="half-col">
-          <h2 class="heading h-02">Contact Info</h2>
-          <div class="item"><img src="images/icon_pin.svg" class="inject-me" /><h2 class="heading h-02 h-address">564 N Albert Street. Portland, Or 97266 USA</h2></div>
-          <div class="item"><img src="images/icon_phone.svg" class="inject-me" /><h2 class="heading h-02 h-phone">800.564.1975</h2></div>
-          <div class="item"><img src="images/icon_mail.svg" class="inject-me" /><h2 class="heading h-02 h-email">info@hydrogen.com</h2></div>
-        </aside>
-
-        <aside class="half-col">
-          <h2 class="heading h-02">Contact Us</h2>
-
-          <div class="contact-form">
-            <form id="subscribe" action="js/process.php" method="POST">
-              <div class="input hide-me">
-                <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" />
-              </div>
-              <div class="input hide-me">
-                <input type="email" name="email" id="email" placeholder="Email" autocomplete="off" />
-              </div>
-              <div class="input hide-me">
-                <textarea name="message" id="message" placeholder="Your Message"></textarea>
-              </div>
-              <div class="form-result"></div>
-              <button type="submit" id="reserve-btn" class="hide-me button normal rounded">Reserve Now!</button>
-            </form>
-          </div>
-
-        </aside>
+          <aside class="half-col">
+            <h2 class="heading h-02">Contact Us</h2>
+            <div class="contact-form">
+              <form id="subscribe" action="js/process.php" method="POST">
+                <input type="text" name="info" class="info_field" placeholder="info" autocomplete="off">
+                <div class="input hide-me">
+                  <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" />
+                </div>
+                <div class="input hide-me">
+                  <input type="email" name="email" id="email" placeholder="Email" autocomplete="off" />
+                </div>
+                <div class="input hide-me">
+                  <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                </div>
+                <div class="form-result"></div>
+                <button type="submit" id="reserve-btn" class="hide-me button normal rounded">Reserve Now!</button>
+              </form>
+            </div>
+          </aside>
+        </section>
 
       </div>
     </section>

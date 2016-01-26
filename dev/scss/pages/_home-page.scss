@@ -64,12 +64,13 @@
   }
 
   // Responsive
-  @include gridle_state(tablet) { 
+  @media screen and (min-width: 767px) and (max-width: 510px) {
     .c-hero { padding: 0 90px; } 
     .logo { padding-left: 20px;  }
     .primary-nav { padding-right: 20px;  }
   }
-  @include gridle_state(mobile) { 
+  
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     .primary-nav {
       display: none;
       float: none; 
@@ -84,7 +85,7 @@
     .h-hero { margin-top: 30px; }
     .c-hero { padding: 0 30px; } 
   }
-  @include gridle_state(mobile-small) { .c-hero { padding: 0; } }
+  @media screen and (min-width: 320px) and (max-width: 510px) { .c-hero { padding: 0; } }
 }
 
 // -------------------------------------
@@ -241,7 +242,7 @@
   }
 
   // Responsive
-  @include gridle_state(mobile) { 
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     .h-quote {
       font-size: 18px;
       line-height: 26px;
@@ -341,17 +342,17 @@
 
 
   // Responsive
-  @include gridle_state(tablet) { 
+  @media screen and (min-width: 767px) and (max-width: 510px) {
     .item, .grid-sizer {
       width: 33.3333%;
     }
   }
-  @include gridle_state(mobile) { 
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     .item, .grid-sizer {
       width: 50%;
     }
   }
-  @include gridle_state(mobile-small) { 
+  @media screen and (min-width: 320px) and (max-width: 510px) {
     .button-set {
       display: block;
       float: left;
@@ -411,7 +412,10 @@
 
   .item {
     margin-bottom: 20px;
-    @include gridle(3);
+    width: 25%;
+    float: left;
+    padding: 0 10px;
+    box-sizing: border-box;
     @include killflicker;
     img { display: block; }
     .info {
@@ -429,10 +433,10 @@
     }
   }
 
-  @include gridle_state(mobile) { 
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     .item { width: 50%; }
   }
-  @include gridle_state(mobile-small) { 
+  @media screen and (min-width: 320px) and (max-width: 510px) {
     .item {
       width: 100%;
     }
@@ -559,7 +563,7 @@
   }
 
   // Responsive
-  @include gridle_state(mobile) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     figure {
       width: 100%;
       &:before, &:after {
@@ -646,7 +650,7 @@
       padding: 20px 0;
     }
 
-    @include gridle_state(mobile-small) {
+    @media screen and (min-width: 320px) and (max-width: 510px) {
       &.error, &.success { font-size: 10px; }
     }
   }
@@ -682,7 +686,7 @@
   .copyright { margin: 20px 0; }
 
   // Responsive
-  @include gridle_state(mobile-small) {
+  @media screen and (min-width: 320px) and (max-width: 510px) {
     .copyright { font-size: 10px; text-align: center; }
   }
 }

@@ -1,7 +1,7 @@
 // -------------------------------------
 // ★ Tablet Styles
 // -------------------------------------
-@include gridle_state(tablet) {
+@media screen and (min-width: 767px) and (max-width: 510px) {
   .site-inner { width: $tabletWidth; }
 }
 
@@ -9,7 +9,7 @@
 // -------------------------------------
 // ★ Mobile Styles
 // -------------------------------------
-@include gridle_state(mobile) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
 
   // Turning off hover states on touch devices
   .touch {
@@ -44,36 +44,19 @@
   }
 }
 
-
-
-
-
-// Standard 960 or larger (browsers) 
-@media only screen and (min-width: 960px) {
-
+// Mobile Small
+@media screen and (min-width: 320px) and (max-width: 510px) {
 }
 
-// Smaller than standard 960 (devices and browsers)
-@media only screen and (max-width: 959px) {
-
+// Mobile
+@media screen and (min-width: 320px) and (max-width: 767px) {
 }
 
-// Tablet Portrait size to standard 960 (devices and browsers)
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-
+// Tablet
+@media screen and (min-width: 767px) and (max-width: 510px) {
+  
 }
 
-// All Mobile Sizes (devices and browser)
-@media only screen and (max-width: 767px) {
-
-}
-
-// Mobile Landscape Size to Tablet Portrait (devices and browsers)
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-
-}
-
-// Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
-@media only screen and (max-width: 479px) {
-
+// Desktop
+@media screen and (min-width: 1170px) and (max-width: 1600px) {
 }

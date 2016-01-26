@@ -2,6 +2,7 @@
   $name = strip_tags($_POST['name']);
   $email = strip_tags($_POST['email']);
   $message = strip_tags($_POST['message']);
+  $honeypot = strip_tags($_POST['info']);
 
   $to = 'vadim@owl-design.net';
   $subject = 'Website Contact Form';
@@ -18,6 +19,10 @@
   $headers .= "Reply-To: ". $email . "\r\n";
   $headers .= "MIME-Version: 1.0\r\n";
   $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+  if ($honeypot != '') {
+    die();
+  }
 
   if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
     print "error";
