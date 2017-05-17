@@ -4,7 +4,7 @@
   $message = strip_tags($_POST['message']);
   $honeypot = strip_tags($_POST['info']);
 
-  $to = 'vadim@owl-design.net';
+  $to = 'YOUR EMAIL ADDRESS';
   $subject = 'Website Contact Form';
 
   $body = '<html><body>';
